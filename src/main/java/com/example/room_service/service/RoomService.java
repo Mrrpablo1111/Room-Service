@@ -1,7 +1,8 @@
 package com.example.room_service.service;
 
-import com.example.room_service.dto.RoomDTO;
+import     com.example.room_service.dto.RoomDTO;
 
+import com.example.room_service.dto.RoomFilterDTO;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -12,5 +13,5 @@ public interface RoomService {
 	Mono<Void> deleteRoom(String id);
 	
 	//Study Purpose Only
-	Flux<RoomDTO>searchRoomByName(String name) ;
+	Flux<RoomDTO> getRoomByFilter(RoomFilterDTO filterDTO);
 }

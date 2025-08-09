@@ -1,5 +1,9 @@
 package com.example.room_service.impl;
 
+import com.example.room_service.dto.RoomFilterDTO;
+import com.example.room_service.repository.RoomCustomRepository;
+import com.example.room_service.util.RoomCriteriaBuilder;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
 import com.example.room_service.domain.Room;
@@ -21,7 +25,7 @@ public class RoomServiceImpl implements RoomService{
 	
 	
 	private final RoomRepository roomRepository;
-	
+	private final RoomCustomRepository roomCustomRepository;
 	
 	private final RoomMapper roomMapper;
 	
@@ -69,10 +73,11 @@ public class RoomServiceImpl implements RoomService{
 	}
 
 	@Override
-	public Flux<RoomDTO> searchRoomByName(String name) {
-		
-		return roomRepository.findByNameContainingIgnoreCase(name).map(roomMapper::toRoomDTO);
+	public Flux<RoomDTO> getRoomByFilter(RoomFilterDTO filterDTO) {
+		Query query = RoomCriteriaBuilder.build(filterDTO);
+		return roomCustomRepository.findByFilter(query)
+				.map(roomMapper::toRoomDTO);
+
 	}
-	
 
 }
