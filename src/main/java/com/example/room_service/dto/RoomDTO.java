@@ -2,10 +2,16 @@ package com.example.room_service.dto;
 
 import java.util.Map;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 @Data
 public class RoomDTO {
+	private String id;
+	@NotBlank(message = "Room name is required")
+	@Size(max = 100,message =  "Room name must be at most 100 Charactors")
 	private String name;
 	private Map<String, Object> attributes; 
+	
 }
