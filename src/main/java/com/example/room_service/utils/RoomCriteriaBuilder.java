@@ -2,6 +2,7 @@ package com.example.room_service.utils;
 
 import java.util.Objects;
 
+import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 
@@ -33,6 +34,27 @@ public class RoomCriteriaBuilder {
 				//.skip((long) filter.getPage() * filter.getSize())
 				//.limit(filter.getSize());
 		return criteria;
+	}
+	
+	public static Sort sort(RoomFilterDTO filter) {
+		
+		//sort direction
+		Sort.Direction direction = Sort.Direction.ASC;
+		if("desc".equalsIgnoreCase(filter.getDirection())) {
+			direction = Sort.Direction.DESC;
+		}
+		
+		//sort field
+		String sortField = filter.getSortBy();
+		if(!sortField.contains(".")) {
+			if(!sortField.equals("name")) {
+				sortField = "attributes." + sortField; 
+			}
+		}
+		
+		return Sort.by(direction, sortField);
+		
+		
 	}
 	
 }

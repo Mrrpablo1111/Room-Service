@@ -78,10 +78,10 @@ public class RoomServiceImpl implements RoomService{
 
 	@Override
 	public Flux<RoomDTO> getRoomByFilter(RoomFilterDTO filterDTO) {
-		Query query = RoomCriteriaBuilder.build(filterDTO);
-		return roomCustomRespository.findByFilter(query)
+		  Criteria criteria = RoomCriteriaBuilder.build(filterDTO);
+		return roomCustomRespository.findByFilter(new Query(criteria))
 				.map(roomMapper::toRoomDTO);
-		
+		 
 	}
 
 	@Override
@@ -93,6 +93,8 @@ public class RoomServiceImpl implements RoomService{
 		Query query = new Query(criteria)
 				.skip((long) filterDTO.getPage() * filterDTO.getSize())
 				.limit(filterDTO.getSize());
+		
+		query.with(RoomCriteriaBuilder.sort(filterDTO));
 		
 //		query.skip((long) filterDTO.get)
 		
