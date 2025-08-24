@@ -31,7 +31,7 @@ public class RoomServiceImpl implements RoomService{
 	private final RoomRepository roomRepository;
 	private final RoomMapper roomMapper;
 	private final RoomCustomRepository roomCustomRespository;
-	private Query query;
+	
 	
 	@Override
 	public Mono<RoomDTO> createRoom(RoomDTO roomDTO) {
@@ -40,6 +40,9 @@ public class RoomServiceImpl implements RoomService{
 		return roomRepository.save(room)
 			.doOnSuccess(saved -> log.info("Save Success:{}", saved))
 			.map(roomMapper::toRoomDTO);
+			
+			//Reference(Can use like reference)
+			//.map(r -> roomMapper.toRoomDTO(r);
 	}
 
 	@Override
