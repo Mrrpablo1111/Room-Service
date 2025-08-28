@@ -1,5 +1,7 @@
 package com.example.room_service.utils;
 
+import java.util.List;
+
 public final class RoomConstants {
 	
 	private RoomConstants() {}
@@ -15,5 +17,8 @@ public final class RoomConstants {
 	public static final String OP_GT = "gt";
 	public static final String OP_GTE = "gte";
 	public static final String OP_EQ ="eq";
+	
+// sort-allow-list
+	public static final List<String> ALLOW_SORT_LIST = List.of("name","price", "floor");
 	
 }
