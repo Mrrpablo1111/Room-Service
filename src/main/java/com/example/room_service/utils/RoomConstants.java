@@ -14,7 +14,6 @@ public final class RoomConstants {
 	public static final String OP_LTE = "lte";
 	public static final String OP_GT = "gt";
 	public static final String OP_GTE = "gte";
-	public static final String OP_EQ = "eq";
-	
+	public static final String OP_EQ ="eq";
 	
 }
