@@ -19,6 +19,6 @@ public final class RoomConstants {
 	public static final String OP_EQ ="eq";
 	
 // sort-allow-list
-	public static final List<String> ALLOW_SORT_LIST = List.of("name","price", "floor");
+	public static final List<String> ALLOWED_SORT_FIELD = List.of("name","price", "floor");
 	
 }
