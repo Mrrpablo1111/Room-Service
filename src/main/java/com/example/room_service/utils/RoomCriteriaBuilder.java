@@ -89,7 +89,6 @@ public class RoomCriteriaBuilder {
 		}
 
 		return Sort.by(direction, sortField);
-
 	}
 
 }
