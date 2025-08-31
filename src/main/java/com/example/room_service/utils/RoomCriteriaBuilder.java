@@ -13,7 +13,11 @@ import com.example.room_service.dto.RoomFilterDTO;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class RoomCriteriaBuilder {
+public final class RoomCriteriaBuilder {
+	
+	private RoomCriteriaBuilder() {
+		throw new UnsupportedOperationException("Utility class");
+	}
 	public static Criteria build(RoomFilterDTO filter) {
 
 		// we need to add to array list
@@ -41,40 +45,10 @@ public class RoomCriteriaBuilder {
 
 		return criterias.isEmpty() ? new Criteria() : new Criteria().andOperator(criterias.toArray(new Criteria[0]));
 
-		// This is not flexible code
-//		Criteria criteria = new Criteria();
-//		
-//		if(Objects.nonNull(filter.getName())) {
-//			criteria.and(FIELD_NAME).is(filter.getName());
-//		}
-//		if(Objects.nonNull(filter.getFloor())) {
-//			criteria.and(FIELD_FLOOR).is(filter.getFloor());
-//		}
-//		
-//		if(Objects.nonNull(filter.getPrice()) && Objects.nonNull(filter.getPriceOp())) {
-//			switch(filter.getPriceOp()) {
-//			case OP_LT  -> criteria.and(FIELD_PRICE).lt(filter.getPrice());
-//			case OP_LTE -> criteria.and(FIELD_PRICE).lte(filter.getPrice());
-//			case OP_GT -> criteria.and(FIELD_PRICE).gt(filter.getPrice());
-//			case OP_GTE -> criteria.and(FIELD_PRICE).gte(filter.getPrice());
-//			case OP_EQ -> criteria.and(FIELD_PRICE).is(filter.getPrice());
-//			}
-//		}else if(Objects.nonNull(filter.getPriceMin()) && Objects.nonNull(filter.getPriceMax())) {
-//			criteria.and(RoomConstants.FIELD_PRICE).gte(filter.getPriceMin()).lte(filter.getPriceMax());
-//		}
-////		Query query = new Query(criteria);
-//				//.skip((long) filter.getPage() * filter.getSize())
-//				//.limit(filter.getSize());
-//		return criteria;
+		
 	}
 
 	public static Sort sort(RoomFilterDTO filter) {
-
-		// sort direction
-		//Sort.Direction direction = Sort.Direction.ASC;
-		//if ("desc".equalsIgnoreCase(filter.getDirection())) {
-		//	direction = Sort.Direction.DESC;
-		//}
 		
 		Sort.Direction direction = "desc".equalsIgnoreCase(filter.getDirection()) ? Sort.Direction.DESC : Sort.Direction.ASC;
 

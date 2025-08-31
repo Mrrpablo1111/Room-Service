@@ -21,7 +21,7 @@ import com.example.room_service.dto.RoomFilterDTO;
 import com.example.room_service.utils.RoomCriteriaBuilder;
 
 
-public class RoomCriteriaBuilderTest {
+class RoomCriteriaBuilderTest {
 	
 	//mimic Constants
 	private static final String FIELD_NAME = "name";

@@ -40,20 +40,6 @@ public class GlobalExceptionHandler {
 		log.warn("Unexspacted Error", ex.getMessage());
 		return Mono.just(problemFactory.create(HttpStatus.INTERNAL_SERVER_ERROR ,"Unexspacted Error:"+ex.getMessage(),ErrorCode.SYSTEM_ERROR.name(), exchange));
 	}
-//	@ExceptionHandler(WebExchangeBindException.class)
-//	public Mono<ProblemDetail> handleConstraintViolation(WebExchangeBindException ex, ServerWebExchange exchange){
-//		log.warn("Constraint Violation: {}", ex.getMessage());
-//		ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, ex.getMessage());
-//		problemDetail.setTitle("Constraint Violation");
-//		return Mono.just(problemDetail); 
-//	}
-//	
-//	@ExceptionHandler(RoomNotFoundException.class)
-//	public Mono<ProblemDetail>handleRoomNotFound(RoomNotFoundException ex, ServerWebExchange exhange){
-//		log.warn("Room Not Found: {}", ex.getMessage());
-//		ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, ex.getMessage());
-//		problemDetail.setTitle("Room Not Found");
-//		return Mono.just(problemDetail);
-//	}
+
 }
  

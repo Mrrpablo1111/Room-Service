@@ -4,7 +4,10 @@ import java.util.Map;
 
 import com.example.room_service.dto.RoomFilterDTO;
 
-public class RoomFilterDTOMapper {
+public final class RoomFilterDTOMapper {
+	private RoomFilterDTOMapper() {
+		throw new UnsupportedOperationException("Utility class");
+	}
 	public static RoomFilterDTO toRoomFilterDTO(Map<String, String> params) {
 		RoomFilterDTO dto= new RoomFilterDTO();
 		if(params.containsKey("name")) {

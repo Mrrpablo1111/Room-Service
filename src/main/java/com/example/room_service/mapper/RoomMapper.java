@@ -14,23 +14,6 @@ public interface RoomMapper{
 	RoomDTO toRoomDTO(Room room);
 	
 	@Mapping(target = "id", ignore = true)
-	void updateRoomFromDTO(RoomDTO roomDTO,@MappingTarget Room Entity);
-	//DTO toEntity
-//	public Room toRoom(RoomDTO roomDTO) {
-//		Room room = new Room();
-//		room.setAttributes(roomDTO.getAttributes());
-//		room.setName(roomDTO.getName());
-//		return room;	
-//	}
-	
-	//Entity -> DTO
-	
-//	public RoomDTO toRoomDTO(Room room) {
-//		RoomDTO dto = new RoomDTO();
-//		dto.setAttributes(room.getAttributes());
-//		dto.setName(room.getName());
-//		return dto;
-//	}
-	
+	void updateRoomFromDTO(RoomDTO roomDTO,@MappingTarget Room entity);
 	
 }
