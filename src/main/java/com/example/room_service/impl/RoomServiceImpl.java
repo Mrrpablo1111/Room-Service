@@ -41,8 +41,7 @@ public class RoomServiceImpl implements RoomService{
 			.doOnSuccess(saved -> log.info("Save Success:{}", saved))
 			.map(roomMapper::toRoomDTO);
 			
-			//Reference(Can use like reference)
-			//.map(r -> roomMapper.toRoomDTO(r);
+			
 	}
 
 	@Override
@@ -63,8 +62,8 @@ public class RoomServiceImpl implements RoomService{
 		.switchIfEmpty(Mono.error(new RoomNotFoundException(id)))		
 		.flatMap(existing -> {
 			roomMapper.updateRoomFromDTO(roomDTO, existing);
-			Mono<Room> monoRoom = roomRepository.save(existing);
-			return monoRoom; 
+			return roomRepository.save(existing);
+			
 		})
 		.map(roomMapper::toRoomDTO);
 		
@@ -98,15 +97,10 @@ public class RoomServiceImpl implements RoomService{
 				.limit(filterDTO.getSize());
 		
 		query.with(RoomCriteriaBuilder.sort(filterDTO));
-		
-//		query.skip((long) filterDTO.get)
-		
+				
 		Flux<RoomDTO> contentFlux = roomCustomRespository.findByFilter(query).map(roomMapper::toRoomDTO);
 		
-	
-		
-//		.skip((long) filter.getPage() * filter.getSize())
-//		.limit(filter.getSize());
+
 		return Mono.zip(countMono, contentFlux.collectList())
 		.map(tuple -> {
 			long total = tuple.getT1();

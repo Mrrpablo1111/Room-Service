@@ -20,7 +20,7 @@ import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
 @ExtendWith(MockitoExtension.class)
-public class RoomServiceImplTest {
+class RoomServiceImplTest {
 	@Mock
 	private RoomRepository roomRepository;
 	@Mock
