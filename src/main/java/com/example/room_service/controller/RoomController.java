@@ -3,7 +3,9 @@ package com.example.room_service.controller;
 
 
 
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.codec.multipart.FilePart;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -12,13 +14,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.room_service.dto.PageDTO;
 import com.example.room_service.dto.RoomDTO;
 import com.example.room_service.dto.RoomFilterDTO;
-
+import com.example.room_service.dto.RoomImportSummaryDTO;
+import com.example.room_service.service.RoomImportService;
 import com.example.room_service.service.RoomService;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -36,6 +39,7 @@ public class RoomController {
 	
 	
 	private final RoomService roomService;
+	private final RoomImportService roomImportService;
 	
 	@PostMapping
 	public Mono<RoomDTO> createRoom(@Valid @RequestBody RoomDTO roomDTO){
@@ -79,5 +83,9 @@ public class RoomController {
 						
 	}
 	
+	@PostMapping(value = "/upload-excel-file",consumes = MediaType.MULTIPART_FORM_DATA_VALUE )
+	public Mono<RoomImportSummaryDTO > uploadExcell(@RequestPart("file") FilePart filePart){
+		return roomImportService.importRooms(filePart);
+	}
 
 }
