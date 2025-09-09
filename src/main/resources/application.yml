@@ -3,7 +3,12 @@ spring:
    name: room-service
   data:
     mongodb:
-      uri: mongodb://localhost:27017/room
+      host: localhost
+      port: 27017
+      database: room         
+      username: root
+      password: root
+      authentication-database: admin  
 logging:
   level:
     root: INFO
