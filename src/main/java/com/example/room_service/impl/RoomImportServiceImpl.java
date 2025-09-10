@@ -107,7 +107,7 @@ public class RoomImportServiceImpl implements RoomImportService {
 				// ValidRoom
 				Room room = new Room();
 				room.setName(name);
-				room.setAttributes(rowData);
+				//room.setAttributes(rowData);
 				log.debug("Prepared save to room: {}", room);
 				validRoom.add(room);
 			}
