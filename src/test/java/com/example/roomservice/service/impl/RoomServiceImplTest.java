@@ -15,7 +15,6 @@ import com.example.room_service.mapper.RoomMapper;
 import com.example.room_service.repository.RoomCustomRepository;
 import com.example.room_service.repository.RoomRepository;
 
-
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
@@ -27,35 +26,35 @@ class RoomServiceImplTest {
 	private RoomMapper roomMapper;
 	@Mock
 	private RoomCustomRepository roomCustomRespository;
-	
+
 	@InjectMocks
 	private RoomServiceImpl roomService;
-	
+
 	@Test
 	void createRoom_success() {
 		// given
 		RoomDTO roomDTO = new RoomDTO();
 		roomDTO.setName("SmallRoom");
-		
+
 		Room room = new Room();
 		room.setName("SmallRoom");
-		
+
 		Room savedRoom = new Room();
 		savedRoom.setId("123");
 		savedRoom.setName("SmallRoom");
-		
-		// when 
-		when(roomMapper.toRoom(roomDTO)).thenReturn(room); 
+
+		// when
+		when(roomMapper.toRoom(roomDTO)).thenReturn(room);
 		when(roomRepository.save(room)).thenReturn(Mono.just(savedRoom));
 		when(roomMapper.toRoomDTO(savedRoom)).thenReturn(roomDTO);
-		 
-		// then 
-		
+
+		// then
+
 		StepVerifier.create(roomService.createRoom(roomDTO))
 		.expectNext(roomDTO)
 		.verifyComplete();
 	}
-	
+
 	@Test
 	void getRoomById_success() {
 	    // given
@@ -79,5 +78,5 @@ class RoomServiceImplTest {
 	            .verifyComplete();
 
 	}
-	
+
 }

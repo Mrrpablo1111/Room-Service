@@ -43,7 +43,7 @@ public class RoomImportServiceImpl implements RoomImportService {
 	@Override
 	public Mono<RoomImportSummaryDTO> importRooms(FilePart filePart) {
 		return filePart.content().map(dataBuffer -> {
-			byte[] bytes = new byte[dataBuffer.readableByteCount()];
+			byte[] bytes = new byte[dataBuffer.readableByteCount()]; 
 			dataBuffer.read(bytes);
 			DataBufferUtils.release(dataBuffer);
 			return new ByteArrayInputStream(bytes);

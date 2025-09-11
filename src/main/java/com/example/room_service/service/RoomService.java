@@ -13,5 +13,5 @@ public interface RoomService {
 	Mono<RoomDTO> updateRoom(String id, RoomDTO roomDTO);
 	Mono<Void> deleteRoom(String id);
 	Flux<RoomDTO> getRoomByFilter(RoomFilterDTO filterDTO);
-	Mono<PageDTO<RoomDTO>> getRoomByFilterPaginate(RoomFilterDTO filterDTO);
+	Mono<PageDTO<RoomDTO>> getRoomByFilterPaginate(RoomFilterDTO filterDTO) throws IllegalAccessException;
 }

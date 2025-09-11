@@ -10,10 +10,10 @@ import com.example.room_service.dto.RoomDTO;
 
 @Mapper(componentModel = "Spring")
 public interface RoomMapper{
-	Room toRoom(RoomDTO roomDTO); 
+	Room toRoom(RoomDTO roomDTO);
 	RoomDTO toRoomDTO(Room room);
-	
+
 	@Mapping(target = "id", ignore = true)
 	void updateRoomFromDTO(RoomDTO roomDTO,@MappingTarget Room entity);
-	
+
 }

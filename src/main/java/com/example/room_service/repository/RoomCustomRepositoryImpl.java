@@ -27,7 +27,7 @@ public class RoomCustomRepositoryImpl implements RoomCustomRepository {
 	public Mono<Long> countByFilter(Query query) {
 		return mongoTemplate.count(query, Room.class);
 	}
-	
-	
+
+
 
 }

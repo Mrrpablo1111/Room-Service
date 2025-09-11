@@ -8,7 +8,7 @@ import org.springframework.web.server.ServerWebExchange;
 
 
 public interface ProblemDetailFactory {
-	
+
 	ProblemDetail create(HttpStatus status, String message, ServerWebExchange exchange);
 	ProblemDetail create(HttpStatus status, String message, ServerWebExchange exchange, Map<String, Object> properties);
 	ProblemDetail create(HttpStatus status, String message, String errorCode, ServerWebExchange exchange);

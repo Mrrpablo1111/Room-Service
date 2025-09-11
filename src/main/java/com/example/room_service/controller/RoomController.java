@@ -36,14 +36,14 @@ import reactor.core.publisher.Mono;
 @RestController
 @RequestMapping("/api/rooms")
 public class RoomController {
-	
-	
+
+
 	private final RoomService roomService;
 	private final RoomImportService roomImportService;
-	
+
 	@PostMapping
 	public Mono<RoomDTO> createRoom(@Valid @RequestBody RoomDTO roomDTO){
-		
+
 		return roomService.createRoom(roomDTO);
 	}
 	@GetMapping("/{roomId}")
@@ -51,38 +51,38 @@ public class RoomController {
 	public Mono<RoomDTO> getRoomById(@PathVariable String roomId){
 		return roomService.getRoomById(roomId);
 	}
-	
+
 	@PutMapping("/{roomId}")
 	public Mono<RoomDTO> updateRoom(@PathVariable String roomId, @RequestBody RoomDTO roomDTO){
 		return roomService.updateRoom(roomId, roomDTO);
 	}
-	
+
 	@DeleteMapping("/{roomId}")
 	public Mono<Void> deleteRoom(@PathVariable String roomId){
-		
+
 		return roomService.deleteRoom(roomId);
 	}
-		
+
 	@GetMapping("/search")
 	public Flux<RoomDTO>getRoomByFilter(@ModelAttribute RoomFilterDTO roomFilterDTO){
 		return roomService.getRoomByFilter(roomFilterDTO);
 	}
-	
+
 	@GetMapping("/search/pagination")
-	public Mono<PageDTO<RoomDTO>>getRoomByFilterPagination(@ModelAttribute RoomFilterDTO roomFilterDTO){
+	public Mono<PageDTO<RoomDTO>>getRoomByFilterPagination(@ModelAttribute RoomFilterDTO roomFilterDTO) throws IllegalAccessException{
 		return roomService.getRoomByFilterPaginate(roomFilterDTO);
 	}
-	
+
 	@GetMapping("/search/pagination2")
-	public Mono<ResponseEntity<PageDTO<RoomDTO>>>getRoomByFiltssssserPaginationWithHeader(@ModelAttribute RoomFilterDTO roomFilterDTO){
+	public Mono<ResponseEntity<PageDTO<RoomDTO>>>getRoomByFiltssssserPaginationWithHeader(@ModelAttribute RoomFilterDTO roomFilterDTO) throws IllegalAccessException{
 		return roomService.getRoomByFilterPaginate(roomFilterDTO)
 				.map(page -> ResponseEntity.ok()
 						.header("X-Total-Count", String.valueOf(page.getTotalElement()))
 						.body(page)
 						);
-						
+
 	}
-	
+
 	@PostMapping(value = "/upload-excel-file",consumes = MediaType.MULTIPART_FORM_DATA_VALUE )
 	public Mono<RoomImportSummaryDTO > uploadExcell(@RequestPart("file") FilePart filePart){
 		return roomImportService.importRooms(filePart);
