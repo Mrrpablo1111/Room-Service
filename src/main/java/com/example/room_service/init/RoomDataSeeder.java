@@ -78,7 +78,7 @@ public class RoomDataSeeder implements ApplicationListener<ApplicationReadyEvent
 						   .district(district)
 						   .street(faker.address().streetAddress())
 						   .fullAddress(faker.address().fullAddress())
-						   .coordinates(coordinates)
+						   //.coordinates(coordinates)
 						   .build())
 				   .hasFan(randomBool())
 				   .hasAirConditioner(randomBool())

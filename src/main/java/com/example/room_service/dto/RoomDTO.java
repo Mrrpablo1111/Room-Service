@@ -5,10 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.example.room_service.domain.Location;
-import com.example.room_service.domain.enumeration.GenderPreference;
 import com.example.room_service.domain.enumeration.PropertyType;
-import com.example.room_service.domain.enumeration.RoomType;
 
 import lombok.Data;
 
@@ -22,7 +19,7 @@ public class RoomDTO {
 	private Integer floor;
 	private Double roomSize;
 
-	private Location location;
+	private LocationDTO location;
 
 	private Boolean hasFan;
 	private Boolean hasAirConditioner;
@@ -40,9 +37,9 @@ public class RoomDTO {
 	private Boolean isPetFriendly;
 	private Boolean isSmokingAllowed;
 	private Boolean isSharedRoom;
-	private GenderPreference genderPreference;
+	private String genderPreference; 
 
-	private RoomType roomType;
+	private String roomType;
 	private PropertyType propertyType;
 
 	private Double distanceToCenter;

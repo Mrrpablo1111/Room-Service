@@ -35,7 +35,7 @@ public class RoomServiceImpl implements RoomService{
 
 	@Override
 	public Mono<RoomDTO> createRoom(RoomDTO roomDTO) {
-		log.debug("Save room to DB,{}", roomDTO);
+		log.info("Save room to DB,{}", roomDTO);
 		Room room = roomMapper.toRoom(roomDTO);
 		return roomRepository.save(room)
 			.doOnSuccess(saved -> log.info("Save Success:{}", saved))
@@ -95,7 +95,7 @@ public class RoomServiceImpl implements RoomService{
 		Query query = new Query(criteria)
 				.skip((long) filterDTO.getPage() * filterDTO.getSize())
 				.limit(filterDTO.getSize());
-
+ 
 		query.with(RoomCriteriaBuilder.sort(filterDTO));
 
 		Flux<RoomDTO> contentFlux = roomCustomRespository.findByFilter(query).map(roomMapper::toRoomDTO);
