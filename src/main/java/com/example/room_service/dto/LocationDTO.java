@@ -1,4 +1,6 @@
-package com.example.room_service.domain;
+package com.example.room_service.dto;
+
+import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,11 +11,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Location {
+public class LocationDTO {
 	private String country;
 	private String city;
 	private String district;
 	private String street;
 	private String fullAddress;
-//	private GeoJsonPoint coordinates;
+	private GeoJsonPoint   coordinates;
 }

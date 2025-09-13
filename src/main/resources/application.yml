@@ -15,4 +15,4 @@ logging:
     com.example.room_service.filter: DEBUG
 room: 
   seed:
-   enabled: true
+   enabled: false
