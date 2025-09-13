@@ -16,7 +16,7 @@ import reactor.core.publisher.Mono;
 @Slf4j
 @RequiredArgsConstructor
 public class GlobalExceptionHandler {
-	
+
 	private final ProblemDetailFactory problemFactory;
 	@ExceptionHandler(RoomNotFoundException.class)
 	public Mono<ProblemDetail> handleRoomNotFound(RoomNotFoundException ex, ServerWebExchange exchnage){
@@ -26,15 +26,15 @@ public class GlobalExceptionHandler {
 				ex.getMessage(),
 				ErrorCode.ROOM_NOT_FOUND.name(),
 				exchnage));
-		
+
 	}
-	
+
 	@ExceptionHandler(WebExchangeBindException.class)
 	public Mono<ProblemDetail> handleConstrainViolation(WebExchangeBindException ex, ServerWebExchange exchange){
 		log.warn("Room not Found:{}", ex.getMessage());
 		return Mono.just(problemFactory.create(HttpStatus.BAD_REQUEST,ex.getMessage(), ErrorCode.CONSTRAIN_VIOLIDATION.name(), exchange));
 	}
-	
+
 	@ExceptionHandler(Exception.class)
 	public Mono<ProblemDetail> handleGeneric(Exception ex, ServerWebExchange exchange){
 		log.warn("Unexspacted Error", ex.getMessage());
@@ -42,4 +42,3 @@ public class GlobalExceptionHandler {
 	}
 
 }
- 

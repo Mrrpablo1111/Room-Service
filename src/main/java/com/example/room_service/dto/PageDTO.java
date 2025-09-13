@@ -14,18 +14,18 @@ import lombok.NoArgsConstructor;
 public class PageDTO<T> {
 	@Schema(description = "Current page number (0-base)")
 	private int page;
-	
+
 	@Schema(description = "Number of records per-page")
 	private int size;
-	
+
 	@Schema(description = "Total number of records")
 	private long totalElement;
-	
+
 	@Schema(description = "Total number of pages")
 	private int totalPage;
-	
+
 	@Schema(description = "Current page data list")
 	private List<T> content;
-	
+
 
 }

@@ -13,3 +13,6 @@ logging:
   level:
     root: INFO
     com.example.room_service.filter: DEBUG
+room: 
+  seed:
+   enabled: true

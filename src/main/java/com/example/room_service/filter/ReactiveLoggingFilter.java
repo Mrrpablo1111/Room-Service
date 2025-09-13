@@ -21,7 +21,7 @@ public class ReactiveLoggingFilter implements WebFilter {
  public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {
   ServerHttpRequest request = exchange.getRequest();
   ServerHttpResponse response = exchange.getResponse();
-  
+
   Instant start = Instant.now();
   String method =  request.getMethod() != null ? request.getMethod().name():"UNKNOWN";
   String path = request.getURI().getPath();
@@ -33,5 +33,5 @@ public class ReactiveLoggingFilter implements WebFilter {
    log.info("⬅️ {} {} - {}({}ms)", method, path, status, duration.toMillis());
   });
  }
- 
+
 }

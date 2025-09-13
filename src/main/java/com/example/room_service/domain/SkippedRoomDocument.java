@@ -20,5 +20,5 @@ public class SkippedRoomDocument {
 	private String reason;
 	private LocalDateTime uploadedDate;
 	private String uploadBatchId;
-	
+
 }

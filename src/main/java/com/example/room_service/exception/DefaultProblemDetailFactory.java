@@ -23,7 +23,7 @@ public class DefaultProblemDetailFactory implements ProblemDetailFactory{
 			ProblemDetail pd = create(status, message, exchange);
 			if(Objects.nonNull(properties)) {
 				properties.forEach(pd::setProperty);
-				
+
 			}
 		return pd;
 	}
@@ -38,5 +38,5 @@ public class DefaultProblemDetailFactory implements ProblemDetailFactory{
 		pd.setProperty("service", "roomService");
 		return pd ;
 	}
-	
+
 }

@@ -14,5 +14,5 @@ public class RoomImportSummaryDTO {
 	private int inserted;
 	private int skipped;
 	private List<Integer> skippedRow;
-	private Map<Integer, String> reasons;  
+	private Map<Integer, String> reasons;
 }
